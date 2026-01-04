@@ -1,0 +1,159 @@
+/* 
+ * src/App.css
+ * Global styles for the Facebook clone application (تطبيق فيسبوك).
+ * Uses Tailwind CSS utility classes heavily, but this file sets up
+ * base styles, custom variables, and basic typography.
+ */
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Custom CSS Variables for Facebook colors */
+:root {
+  --facebook-blue: #1877f2;
+  --facebook-gray: #f0f2ff;
+  --facebook-green: #36a420;
+  --text-primary: #050505;
+  --text-secondary: #606770;
+  --divider: #ccd0d5;
+  --shadow-1: rgba(0, 0, 0, 0.1);
+  --shadow-2: rgba(0, 0, 0, 0.2);
+}
+
+/* Base Body Styles */
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: var(--facebook-gray);
+  color: var(--text-primary);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar Styles (optional, for aesthetics) */
+/* Works primarily in Webkit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--facebook-gray);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Custom Utilities (components that are not standard Tailwind) */
+
+/* Custom Shadow for cards/posts - mimics Facebook's subtle elevation */
+.fb-shadow {
+  box-shadow: 0 1px 2px var(--shadow-1), 0 2px 4px var(--shadow-1);
+}
+
+/* Primary Button Styling (Facebook Blue) */
+.fb-btn-primary {
+  background-color: var(--facebook-blue);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+.fb-btn-primary:hover {
+  background-color: #166fe5;
+}
+
+/* Secondary Button Styling (Gray/Transparent) */
+.fb-btn-secondary {
+  background-color: transparent;
+  color: var(--text-primary);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+.fb-btn-secondary:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Icon Button Styling (Circular) */
+.fb-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #e4e6eb;
+  color: var(--text-primary);
+  transition: background-color 0.2s;
+}
+.fb-icon-btn:hover {
+  background-color: #ccd0d5;
+}
+
+/* Layout Specific Styles */
+/* Defines the main application structure (Header fixed, Content area) */
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content-area {
+  display: flex;
+  flex-grow: 1;
+  padding-top: 56px; /* Offset for fixed Header */
+  /* Ensures sidebar and main content fit nicely */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 1024px) {
+  .content-area {
+    padding-top: 56px;
+    /* On smaller screens, the layout might simplify (e.g., hiding sidebar) */
+  }
+}
+
+/* Input Field Styling */
+.fb-input {
+  border: 1px solid #ccd0d5;
+  border-radius: 6px;
+  padding: 10px 12px;
+  width: 100%;
+  font-size: 17px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.fb-input:focus {
+  outline: none;
+  border-color: var(--facebook-blue);
+  box-shadow: 0 0 0 1px var(--facebook-blue);
+}
+
+/* Post/Card Divider */
+.fb-divider {
+  height: 1px;
+  background-color: var(--divider);
+  margin: 8px 0;
+}
+
+/* Utility for hiding elements visually but keeping them for screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
